@@ -1,12 +1,25 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+import LoginPage from './pages/login'
+import HomePage from './pages/home'
+import SignupPage from './pages/signup'
+import Header from './components/header'
+import NotFound from './pages/error'
+import AdminPage from './pages/admin_page'
 
 function App() {
 
   return (
-    <>
-      <h1>Hello</h1>
-      <p>Welcome to the React application!</p>
-    </>
+    <BrowserRouter>
+    <Header></Header>
+      <Routes path = "/*">
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/adminpage/*" element={<AdminPage />} />
+        <Route path="/*" element={<NotFound/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
